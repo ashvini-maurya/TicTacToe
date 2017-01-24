@@ -29,7 +29,9 @@ $(document).ready(function() {
 		while(taken===false && count != 5){
 			// random turn for computer
 			var computersMove = Math.floor(Math.random() * 9) + 1; 
+			console.log(computersMove);
 			var move = $("#"+computersMove).text();
+			console.log(move);
 			if(move){
 				$("#"+computersMove).text(computersTurn);
 				taken = true;
@@ -121,6 +123,11 @@ $(document).ready(function() {
 		// else {
 		// 	gameOn = false;
 		// }
+		else if(turns[0].length>0 && turns[1].length>0 && turns[2].length>0 && turns[3].length>0 && turns[4].length>0 && turns[5].length>0 && turns[6].length>0 && turns[7].length>0 && turns[8].length>0) {
+			alert("This was a DRAW...");
+			gameOn = false;
+			reset();
+		}
 	}
 
 });
