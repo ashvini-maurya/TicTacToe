@@ -41,10 +41,9 @@ $(document).ready(function() {
 
 	function playerTurn(turn, id){
 		var buttonClicked = $("#"+id)[0]["id"];
-		if(buttonClicked===id && turns[id]===""){
+		if(buttonClicked===id && turns[id-1]===""){
 			count++;
-			turns[id] = turn;
-			// console.log(turns);
+			turns[id-1] = turn;
 			$("#"+id).text(turn);
 			findWhoWins(turns, turn);
 			// if (gameOn === false){
@@ -79,27 +78,32 @@ $(document).ready(function() {
 
 	function findWhoWins(turns, currentTurn){
 		//console.log(turns);
-		if(turns[1] === currentTurn && turns[2] === currentTurn && turns[3] === currentTurn){
+		if(turns[0] === currentTurn && turns[1] === currentTurn && turns[2] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
 			reset();
 		}
-		else if(turns[4] === currentTurn && turns[5] === currentTurn && turns[6] === currentTurn){
+		else if(turns[3] === currentTurn && turns[4] === currentTurn && turns[5] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
 			reset();
 		}
-		else if(turns[7] === currentTurn && turns[8] === currentTurn && turns[9] === currentTurn){
+		else if(turns[6] === currentTurn && turns[7] === currentTurn && turns[8] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
 			reset();
 		}
-		else if(turns[1] === currentTurn && turns[5] === currentTurn && turns[9] === currentTurn){
+		else if(turns[0] === currentTurn && turns[4] === currentTurn && turns[8] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
 			reset();
 		}
-		else if(turns[3] === currentTurn && turns[5] === currentTurn && turns[7] === currentTurn){
+		else if(turns[2] === currentTurn && turns[4] === currentTurn && turns[6] === currentTurn){
+			alert("Player " + currentTurn + " wins!");
+			gameOn = false;
+			reset();
+		}
+		else if(turns[0] === currentTurn && turns[3] === currentTurn && turns[6] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
 			reset();
@@ -110,11 +114,6 @@ $(document).ready(function() {
 			reset();
 		}
 		else if(turns[2] === currentTurn && turns[5] === currentTurn && turns[8] === currentTurn){
-			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
-			reset();
-		}
-		else if(turns[3] === currentTurn && turns[6] === currentTurn && turns[9] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
 			reset();
