@@ -41,7 +41,7 @@ $(document).ready(function() {
 
 	function playerTurn(turn, id){
 		var buttonClicked = $("#"+id)[0]["id"];
-		if(buttonClicked===id){
+		if(buttonClicked===id && turns[id]===""){
 			count++;
 			turns[id] = turn;
 			// console.log(turns);
@@ -56,12 +56,19 @@ $(document).ready(function() {
 
 
 	$("#reset").click(function(){
-		var turns = ["", "", "", "", "", "", "", "", ""];
+		turns = ["", "", "", "", "", "", "", "", ""];
 		$(".btn-lg").html("");
 		count = 0;
 		gameOn = false;
 
 	});
+
+	function reset(){
+		turns = ["", "", "", "", "", "", "", "", ""];
+		$(".btn-lg").html("");
+		count = 0;
+		gameOn = false;
+	}
 
 
 	$(".btn-lg").click(function() {
@@ -75,42 +82,42 @@ $(document).ready(function() {
 		if(turns[1] === currentTurn && turns[2] === currentTurn && turns[3] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
-			// reset();
+			reset();
 		}
 		else if(turns[4] === currentTurn && turns[5] === currentTurn && turns[6] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
-			//reset();
+			reset();
 		}
 		else if(turns[7] === currentTurn && turns[8] === currentTurn && turns[9] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
-			// reset();
+			reset();
 		}
 		else if(turns[1] === currentTurn && turns[5] === currentTurn && turns[9] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
-			// reset();
+			reset();
 		}
 		else if(turns[3] === currentTurn && turns[5] === currentTurn && turns[7] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
-			// reset();
+			reset();
 		}
 		else if(turns[1] === currentTurn && turns[4] === currentTurn && turns[7] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
-			// reset();
+			reset();
 		}
 		else if(turns[2] === currentTurn && turns[5] === currentTurn && turns[8] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
-			// reset();
+			reset();
 		}
 		else if(turns[3] === currentTurn && turns[6] === currentTurn && turns[9] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
-			//reset();
+			reset();
 		}
 		// else {
 		// 	gameOn = false;
