@@ -25,17 +25,18 @@ $(document).ready(function() {
 
 
 	function computerTurn(){
-		var taken = false;
-		while(taken===false && count != 5){
+		var placeTaken = false;
+		while(placeTaken===false && count != 5){
+			//console.log(count);
 			// random turn for computer
 			var computersMove = Math.floor(Math.random() * 9) + 1; 
-			console.log(computersMove);
+			//console.log(computersMove);
 			var move = $("#"+computersMove).text();
-			console.log(move);
-			if(move){
-				$("#"+computersMove).text(computersTurn);
-				taken = true;
-				turns[computersMove] = computersTurn;
+			//console.log(move);
+			if(move===turn){
+				$("#"+computersMove).text(turn);
+				placeTaken = true;
+				turns[computersMove] = turn;
 			}
 		}
 	}
@@ -43,6 +44,7 @@ $(document).ready(function() {
 
 	function playerTurn(turn, id){
 		var buttonClicked = $("#"+id)[0]["id"];
+		//console.log(buttonClicked);
 		if(buttonClicked===id && turns[id-1]===""){
 			count++;
 			turns[id-1] = turn;
@@ -56,19 +58,19 @@ $(document).ready(function() {
 	}
 
 
-	$("#reset").click(function(){
-		turns = ["", "", "", "", "", "", "", "", ""];
+	function clear(){
 		$(".btn-lg").html("");
+		turns = ["", "", "", "", "", "", "", "", ""];
 		count = 0;
 		gameOn = false;
+	}
 
+	$("#reset").click(function(){
+		setTimeout(clear, 2000);
 	});
 
 	function reset(){
-		turns = ["", "", "", "", "", "", "", "", ""];
-		$(".btn-lg").html("");
-		count = 0;
-		gameOn = false;
+		setTimeout(clear, 3000);
 	}
 
 
@@ -82,42 +84,42 @@ $(document).ready(function() {
 		//console.log(turns);
 		if(turns[0] === currentTurn && turns[1] === currentTurn && turns[2] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
+			gameOn = true;
 			reset();
 		}
 		else if(turns[3] === currentTurn && turns[4] === currentTurn && turns[5] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
+			gameOn = true;
 			reset();
 		}
 		else if(turns[6] === currentTurn && turns[7] === currentTurn && turns[8] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
+			gameOn = true;
 			reset();
 		}
 		else if(turns[0] === currentTurn && turns[4] === currentTurn && turns[8] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
+			gameOn = true;
 			reset();
 		}
 		else if(turns[2] === currentTurn && turns[4] === currentTurn && turns[6] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
+			gameOn = true;
 			reset();
 		}
 		else if(turns[0] === currentTurn && turns[3] === currentTurn && turns[6] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
+			gameOn = true;
 			reset();
 		}
 		else if(turns[1] === currentTurn && turns[4] === currentTurn && turns[7] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
+			gameOn = true;
 			reset();
 		}
 		else if(turns[2] === currentTurn && turns[5] === currentTurn && turns[8] === currentTurn){
 			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
+			gameOn = true;
 			reset();
 		}
 		// else {
