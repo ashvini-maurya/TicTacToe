@@ -23,6 +23,7 @@ $(document).ready(function() {
 		//reset();
 	});
 
+	$('#myModal').modal('show');
 
 	function computerTurn(){
 		console.log("computerTurn function is called...");
