@@ -25,50 +25,22 @@ $(document).ready(function() {
 
 
 	function computerTurn(){
-		var placeTaken = false;
-		while(placeTaken===false && count <= 5){
-			//console.log(count);
-			// random turn for computer
-			var computersMove = Math.floor(Math.random() * 9) + 1; 
-			//console.log("computersMove is: " + computersMove);
-			var move = $("#"+computersMove).text();
-			//console.log("move is: " + move);
-			if(computersMove){
-				if (turn==="X"){
-					turn = "O";
-					$("#"+computersMove).text(turn);
-					placeTaken = true;
-					turns[computersMove] = turn;
-					turn = "X";
-				}
-				else if (turn==="O"){
-					turn = "X";
-					$("#"+computersMove).text(turn);
-					placeTaken = true;
-					turns[computersMove] = turn;
-					turn = "O";
-				}
-			}
-		}
+		console.log("computerTurn function is called...");
 	}
 
 
 	function playerTurn(turn, id){
 		var buttonClicked = $("#"+id)[0]["id"];
-		// console.log(buttonClicked);
-		// console.log("id is: " + id);
 		if(buttonClicked===id && turns[id-1]===""){
 			count++;
-			// console.log("count is:" + count);
-
 			turns[id-1] = turn;
-			// console.log("turns is: " + turns);
 			$("#"+id).text(turn);
 			findWhoWins(turns, turn);
-			if (gameOn === false){
-				computerTurn();
-				findWhoWins(turns, computersTurn)
-			}
+			//computerTurn();
+			// if (gameOn === false){
+			// 	computerTurn();
+			// 	findWhoWins(turns, computersTurn)
+			// }
 		}	
 	}
 
