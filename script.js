@@ -29,7 +29,6 @@ $(document).ready(function() {
 		console.log("computerTurn function is called...");
 	}
 
-
 	function playerTurn(turn, id){
 		var buttonClicked = $("#"+id)[0]["id"];
 		if(buttonClicked===id && turns[id-1]===""){
@@ -44,7 +43,6 @@ $(document).ready(function() {
 			// }
 		}	
 	}
-
 
 	function clear(){
 		$(".btn-lg").html("");
@@ -70,54 +68,34 @@ $(document).ready(function() {
 
 	function findWhoWins(turns, currentTurn){
 		//console.log(turns);
-		if(turns[0] === currentTurn && turns[1] === currentTurn && turns[2] === currentTurn){
+		if(
+			(turns[0] === currentTurn && turns[1] === currentTurn && turns[2] === currentTurn) || 
+			(turns[3] === currentTurn && turns[4] === currentTurn && turns[5] === currentTurn) ||
+			(turns[6] === currentTurn && turns[7] === currentTurn && turns[8] === currentTurn) ||
+			(turns[0] === currentTurn && turns[4] === currentTurn && turns[8] === currentTurn) ||
+			(turns[2] === currentTurn && turns[4] === currentTurn && turns[6] === currentTurn) ||
+			(turns[0] === currentTurn && turns[3] === currentTurn && turns[6] === currentTurn) || 
+			(turns[1] === currentTurn && turns[4] === currentTurn && turns[7] === currentTurn) ||
+			(turns[2] === currentTurn && turns[5] === currentTurn && turns[8] === currentTurn)
+		)	
+		{
 			alert("Player " + currentTurn + " wins!");
 			gameOn = false;
 			reset();
 		}
-		else if(turns[3] === currentTurn && turns[4] === currentTurn && turns[5] === currentTurn){
-			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
-			reset();
-		}
-		else if(turns[6] === currentTurn && turns[7] === currentTurn && turns[8] === currentTurn){
-			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
-			reset();
-		}
-		else if(turns[0] === currentTurn && turns[4] === currentTurn && turns[8] === currentTurn){
-			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
-			reset();
-		}
-		else if(turns[2] === currentTurn && turns[4] === currentTurn && turns[6] === currentTurn){
-			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
-			reset();
-		}
-		else if(turns[0] === currentTurn && turns[3] === currentTurn && turns[6] === currentTurn){
-			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
-			reset();
-		}
-		else if(turns[1] === currentTurn && turns[4] === currentTurn && turns[7] === currentTurn){
-			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
-			reset();
-		}
-		else if(turns[2] === currentTurn && turns[5] === currentTurn && turns[8] === currentTurn){
-			alert("Player " + currentTurn + " wins!");
-			gameOn = false;
-			reset();
-		}
-		// else {
-		// 	gameOn = false;
-		// }
 		else if(turns[0].length>0 && turns[1].length>0 && turns[2].length>0 && turns[3].length>0 && turns[4].length>0 && turns[5].length>0 && turns[6].length>0 && turns[7].length>0 && turns[8].length>0) {
 			alert("This was a DRAW...");
 			gameOn = false;
 			reset();
 		}
 	}
+
+
+	//function updateScore() {
+	// 	console.log("."+turn).text;
+	// 	var score = $("."+turn).text(+$("."+turn).text() + 1);
+	// 	//console.log(score);
+		//console.log("updateScore is called....!!!");
+	// }
 
 });
